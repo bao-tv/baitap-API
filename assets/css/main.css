@@ -127,20 +127,14 @@ header .search-cart .header__cart-wrap:hover .cart {
 header .search-cart .header__cart-wrap:hover .cart .header__cart-notice {
   background-color: #f8f9fa;
   color: #101010;
-}
-header .search-cart .header__cart-wrap::after {
-  cursor: pointer;
-  content: "";
-  position: absolute;
-  right: 35px;
-  top: 45px;
-  border-width: 15px;
-  border-style: solid;
-  border-color: transparent transparent #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 header .search-cart .header__cart-wrap .cart {
   text-decoration: none;
   background-color: #343a40;
+  transition: all 0.3s;
 }
 header .search-cart .header__cart-wrap .cart .header__cart-notice {
   position: absolute;
@@ -149,8 +143,10 @@ header .search-cart .header__cart-wrap .cart .header__cart-notice {
   right: 2px;
   border-radius: 10px;
   background-color: #343a40;
+  transition: all 0.3s;
 }
 header .search-cart .header__cart-wrap .header__cart {
+  display: none;
   width: 450px;
   position: absolute;
   top: 100%;
@@ -163,7 +159,6 @@ header .search-cart .header__cart-wrap .header__cart {
 }
 header .search-cart .header__cart-wrap .header__cart .header__cart-no {
   position: relative;
-  display: none;
 }
 header .search-cart .header__cart-wrap .header__cart .header__cart-no img {
   border-radius: 10px;
@@ -252,6 +247,40 @@ header .search-cart .header__cart-wrap .header__cart .header__cart-yes .header__
   background-color: #e43c5c;
   border-color: #e43c5c;
   color: #fff;
+}
+header .search-cart .header__cart-wrap .header__cart .header__cart-yes .header__cart-footer {
+  padding: 10px;
+  background-color: #343a40;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+header .search-cart .header__cart-wrap .header__cart .header__cart-yes .header__cart-footer .header__cart-footer-left {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+header .search-cart .header__cart-wrap .header__cart .header__cart-yes .header__cart-footer .header__cart-footer-left .header__cart-totalPrice {
+  color: #ea6981;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+header .search-cart .header__cart-wrap .header__cart .header__cart-yes .header__cart-footer .header__cart-footer-left .header__cart-vnd {
+  color: #f8f9fa;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+header .search-cart .header__cart-wrap .header__cart .header__cart-yes .header__cart-footer .header__cart-footer-right {
+  color: #f8f9fa;
+}
+header .search-cart .header__cart-wrap .header__cart::after {
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  right: 36px;
+  top: -28px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #f8f9fa;
 }
 header .search-cart .form-inline {
   justify-content: end;

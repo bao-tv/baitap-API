@@ -229,5 +229,8 @@ function btnSubItem(productId) {
 function total() {
     totalItemCart = cartDetails.reduce((total, obj) => total + obj.quality, 0);
     totalPriceCart = cartDetails.reduce((total, obj) => total + obj.quality*obj.price, 0);
+    getEle("#totalPrice").innerHTML = totalPriceCart;
+    getEle("#totalItem").innerHTML = totalItemCart;
+    (totalItemCart>0) ? getEle("#totalItem").style.opacity = 1 :  getEle("#totalItem").style.opacity = 0;
 };
   
