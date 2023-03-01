@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quản lý sản phẩm</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../assetsAdmin/css/admin.css">
+  </head>
+
+  <body>
+     <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between h-100">
+      <h1 class="logo mb-0"><a href="../../index.html">Shop</a></h1>
+      <nav id="navbar" class="navbar p-0">
+        <ul class="d-flex list-unstyled mb-0">
+          <li><a class="scrollto active" href="#hero">Iphone</a></li>
+          <li><a class="scrollto" href="#about">Samsung</a></li>
+          <li><a class="scrollto" href="#services">Services</a></li>
+          <li><a class="scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+        <div class="navbar-icon">
+          <div class="nav-link dropdown-toggle navbar-icon" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="fa-solid fa-bars position-relative">
+            </i>
+            <ul class="dropdown-menu position-absolute">
+              <li><a class="scrollto active" href="#hero">Iphone</a></li>
+              <li><a class="scrollto" href="#about">Samsung</a></li>
+              <li><a class="scrollto" href="#services">Services</a></li>
+              <li><a class="scrollto" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      <!-- .navbar -->
+      <div class="search-cart d-flex align-items-center">
+        <form class="form-inline my-2 my-lg-0">
+            <button type="button" class="btn btn-secondary">Đăng nhập</button>
+            <button type="button" class="btn btn-secondary">Dăng ký</button>
+        </form>
+    
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <section class="product-admin">
+    <div class="container">
+          <!-- Phan tab menu -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="#DanhSachSP"
+                role="tab"
+                data-toggle="tab"
+                >Danh sách sản phẩm</a
+              >
+            </li>
+            
+          </ul>
+          <br />
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <!--Danh sách sản phẩm -->
+            <div role="tabpanel" class="tab-pane  in active" id="DanhSachSP">
+              <div class="row">
+                <div class="col-md-8">
+                  <!-- BEGIN BUTTOM THÊM MỚI -->
+                  <button
+                    id="btnThemSP"
+                    class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#myModal"
+                  >
+                    <i class="fa fa-plus mr-1"></i>
+                    Thêm Mới
+                  </button>
+                  <!-- END BUTTON THÊM MỚI -->
+                </div>
+                <div class="col-md-4">
+                  <!-- BEGIN TÌM KIẾM -->
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nhập từ khóa"
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                      id="txtSearch"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"
+                        ><i class="fa fa-search"></i
+                      ></span>
+                    </div>
+                  </div>
+                  <!-- END TÌM KIẾM -->
+                </div>
+              </div>
+              <div class="clear-fix"></div>
+              <div class="tblSanPham" id="tblSanPham">
+                <!-- BEGIN TABLE SẢN PHẨM -->
+                <table class="table table-bordered">
+                  <thead>
+                    <th>STT</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Màn hình</th>
+                    <th>Camera trước</th>                
+                    <th>Camera sau</th>
+                    <th>Mô tả</th>
+                    <th>img</th>
+                    <th>type</th>
+                    <th>Active</th>
+                  </thead>
+                  <tbody id="tblDanhSachSP"></tbody>
+                </table>
+                <!-- END TABLE SẢN PHẨM -->
+              </div>
+              <br />
+            </div>
+            <!-- Kết thúc danh sách sản phẩm -->       
+          </div>
+    
+          <!--KetThuc Tabmenu-->
+    
+          <!-- The Modal -->
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                  </button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label>Tên Sản Phẩm</label>
+                    <input
+                      id="TenSP"
+                      class="form-control"
+                      placeholder="Nhập vào tên sản phẩm"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Giá</label>
+                    <input
+                      id="GiaSP"
+                      class="form-control"
+                      placeholder="Nhập vào giá"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Màn hình</label>
+                    <input
+                      id="screenSP"
+                      class="form-control"
+                      placeholder="Nhập vào màn hình"
+                    />
+                  </div>               
+                  <div class="form-group">
+                    <label>Camera sau</label>
+                    <input
+                      id="backCameraSP"
+                      class="form-control"
+                      placeholder="Nhập vào Camera sau"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Camera trước</label>
+                    <input
+                      id="frontCameraSP"
+                      class="form-control"
+                      placeholder="Nhập vào Camera trước"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Mô tả</label>
+                    <input
+                      id="descSP"
+                      class="form-control"
+                      placeholder="Nhập vào mô tả sản phẩm (nếu có)"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>img</label>
+                    <input
+                      id="imgSP"
+                      class="form-control"
+                      placeholder="Nhập vào đường dẫn hình ảnh"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="">Loại sản phẩm: </label>
+                    <select class="form-control" id="loaiSP">
+                        <option value="other">Other</option>
+                        <option value="phone">Phone</option>
+                        <option value="Samsung">Samsung</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="container"></div>
+    </div>
+  </header>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <!-- https://axios-http.com/docs/intro -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- JS -->
+    <script src="../model/Product.js"></script>
+    <script src="../services/productAPI.js"></script>
+    <script src="../controller/main.js"></script>
+  </body>
+</html>
+

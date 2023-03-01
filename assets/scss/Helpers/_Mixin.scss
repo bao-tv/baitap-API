@@ -1,0 +1,27 @@
+@mixin textStyle($color, $fs, $fw) {
+    color: $color;
+    font-size: $fs;
+    font-weight: $fw;
+}
+
+@mixin mobile { 
+    $max-width: map-get($breakpoints, lg) - 1px;
+    @media (max-width: $max-width) {
+      @content;
+    }
+  }  
+  
+@mixin tablet { 
+    $min-width: map-get($breakpoints, lg);
+    $max-width: map-get($breakpoints, xl) - 1px;
+    @media (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  }  
+  
+@mixin desktop {  
+    $min-width: map-get($breakpoints, xl);
+    @media (min-width: $min-width) {
+        @content;  
+    }
+  }

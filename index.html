@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Shop</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="./assets/scss/main.scss">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between h-100">
+      <h1 class="logo mb-0"><a href="index.html">Shop</a></h1>
+      <nav id="navbar" class="navbar p-0">
+        <ul class="d-flex list-unstyled mb-0">
+          <li><a class="scrollto active" href="#Home">Home</a></li>
+          <li><a class="scrollto" href="#information">Information</a></li>
+          <li><a class="scrollto" href="#services">Services</a></li>
+          <li><a class="scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+        <div class="navbar-icon">
+          <div class="nav-link dropdown-toggle navbar-icon" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="fa-solid fa-bars position-relative">
+            </i>
+            <ul class="dropdown-menu position-absolute">
+              <li><a class="scrollto active" href="#Home">Home</a></li>
+              <li><a class="scrollto" href="#information">Information</a></li>
+              <li><a class="scrollto" href="#services">Services</a></li>
+              <li><a class="scrollto" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      <!-- .navbar -->
+      <div class="search-cart d-flex align-items-center">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control hide-search mr-sm-2" id="txtSearch" type="search" placeholder="Search" aria-label="Search">
+          <div class="search-sp mx-2 align-items-center justify-content-center" id="iconSearch">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </form>
+        <div class="header__cart-wrap">
+          <div href="" class="cart mx-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="header__cart-notice d-flex align-items-center justify-content-center">3</span>
+          </div>
+          <div class="header__cart">
+            <div class="header__cart-no">
+              <img src="./assets/img/no-cart.png" alt="" class="header__cart-no-cart">
+              <p class="header__cart-no-cart-msg">Chưa có sản phẩn nào</p>
+            </div>
+            <div class="header__cart-yes">
+              <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+              <!-- Has item -->
+              <ul class="header__cart-list" id="tbodyCart">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <section id="dropdown" class="dropdown">
+    <div class="container">
+      <div class="btn-group" id="filter">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Filter
+        </button>
+        <div class="dropdown-menu">
+          <div class="dropdown-item">
+            <option class="text-center" value="iphone" style="background-image: url('https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png')"></option>
+            </option>
+          </div>
+          <div class="dropdown-item">
+            <option class="text-center" value="samsung" style="background-image: url('https://cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png')"></option>
+          </div>
+          <div class="dropdown-item">
+            <option class="text-center" value="">All</option>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Product Section ======= -->
+  <section id="product" class="product">
+    <div class="container">
+      <div class="row portfolio-container" id="dsProducts">
+      </div>
+    </div>
+  </section><!-- End Product Section -->
+  <section id="" class="administrator">
+    <div class="container mb-3 text-center">
+      <button type="button" class="btn btn-warning"><a href="./admin/view/admin.html">
+        Đến trang dành cho người bán
+      </a> 
+    </button>
+    </div>
+  </section>
+
+  
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- JS bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="./customer/services/productGetAPI.js"></script>
+  <script src="./customer/model/Product.js"></script>
+  <!-- <script src="./customer/controller/cart.js"></script> -->
+  <script src="./customer/controller/main.js"></script>
+
+</body>
+
+</html>

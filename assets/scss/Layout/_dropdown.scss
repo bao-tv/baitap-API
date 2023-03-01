@@ -1,0 +1,15 @@
+.dropdown {
+    padding: 130px 0 0;
+    .dropdown-item  {
+        // object-fit: contain;
+        transition: all 0.5s;
+        :hover {
+            mix-blend-mode: color-burn;
+        }
+        option {
+            background-repeat:no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+}

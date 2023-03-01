@@ -1,0 +1,59 @@
+$height-img-product: 225px;
+
+.product {
+    padding: 130px 0;
+    .portfolio-container {
+        background-color: $color-white;
+        box-shadow: 0 0 3px 0 $color-hover-boder;
+        border-radius: 6px;
+        .portfolio-item{
+            padding: 12px;
+            margin: 20px 0;
+            transition: all .1s;
+            .portfolio-imgs {
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
+                position: relative;
+                height: $height-img-product;
+                text-align: center;
+                margin: 12px;
+                .img-product{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            
+            .portfolio-info {
+                padding: 9px 10px;
+                border-radius: 6px;
+                background: $color-background;
+                &> h4 {
+                    @include textStyle($color-text, $fs-item-name,700);
+                }
+                &> p {
+                    @include textStyle($color-price, $fs-item-price,700);
+                }
+                .cdt-product__config__param {
+                    @include textStyle($color-text, $fs-item-info,500);
+                }
+            }
+
+
+            &:hover {
+                border-radius: 6px;
+                scale:calc(1.05);
+                box-shadow: 0 0 2px 0 $color-hover-boder;
+                z-index: 3;
+                background-color: $color-white;
+            }
+
+        }
+    }
+}
