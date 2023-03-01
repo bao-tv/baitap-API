@@ -1,14 +1,16 @@
-$height-img-product: 225px;
 
 .product {
-    padding: 130px 0;
+    padding: $space-section 0;
     .portfolio-container {
         background-color: $color-white;
         box-shadow: 0 0 3px 0 $color-hover-boder;
         border-radius: 6px;
         .portfolio-item{
-            padding: 12px;
-            margin: 20px 0;
+            border: 1px solid $color-border;
+            .header__cart-border {
+                padding: 12px;
+                margin: 10px 0;
+            }
             transition: all .1s;
             .portfolio-imgs {
                 // display: flex;
@@ -43,6 +45,9 @@ $height-img-product: 225px;
                 .cdt-product__config__param {
                     @include textStyle($color-text, $fs-item-info,500);
                 }
+                .header__cart-vnd {
+                    @include textStyle($color-text, $fs-item-info,400);
+                }
             }
 
 
@@ -55,5 +60,6 @@ $height-img-product: 225px;
             }
 
         }
+        
     }
 }

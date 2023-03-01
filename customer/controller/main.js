@@ -19,6 +19,7 @@ function getProduct(searchValue) {
                 );
             });
             // call API thành công
+            (!searchValue) ? productsList = products : "";
             renderProducts(products);
     }).catch((error) => {
         alert("API get product Error");
@@ -27,32 +28,36 @@ function getProduct(searchValue) {
 
 function renderProducts(products) {
     let html = products.reduce((result, product, index) => {
+        console.log('typeof product.price: ', typeof +product.price.toLocaleString());
         return (
             result + `
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-imgs">
-                    <img src="${product.img}" class="img-fluid img-product" alt="">
-                </div>
-                <div class="portfolio-info">
-                    <h4>${product.itemName}</h4>
-                    <p>${product.price}</p>
-                    <div class="cdt-product__config__param">
-                        <div data-title="Màn hình">
-                            <i class="mr-2 fa-solid fa-mobile-screen"></i></i>${product.screen}
-                        </div>
-                        <div data-title="Camera sau">
-                            <i class="mr-1 fa-solid fa-camera"></i>${product.backCamera}
-                        </div>
-                        <div data-title="Camera sau">
-                            <i class="mr-1 fa-solid fa-camera-rotate"></i>${product.frontCamera}
-                        </div>
-                        <div data-title="Mô tả">
-                            <i class="mr-1"></i>${product.des}
+                <div class="header__cart-border">
+                    <div class="portfolio-imgs">
+                        <img src="${product.img}" class="img-fluid img-product" alt="">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>${product.itemName}</h4>
+                        <p class="d-flex align-items-center">${(+product.price).toLocaleString()}<span class="header__cart-vnd ml-2">VND</span></p>
+                        
+                        <div class="cdt-product__config__param">
+                            <div data-title="Màn hình">
+                                <i class="mr-2 fa-solid fa-mobile-screen"></i></i>${product.screen}
+                            </div>
+                            <div data-title="Camera sau">
+                                <i class="mr-1 fa-solid fa-camera"></i>${product.backCamera}
+                            </div>
+                            <div data-title="Camera sau">
+                                <i class="mr-1 fa-solid fa-camera-rotate"></i>${product.frontCamera}
+                            </div>
+                            <div data-title="Mô tả">
+                                <i class="mr-1"></i>${product.des}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="add-cart-btn">
-                    <button class="btn btn-danger" onclick="addCartItem(${product.id})">MUA NGAY</button>
+                    <div class="add-cart-btn text-right">
+                        <button class="btn btn-danger " onclick="addCartItem(${product.id})">MUA NGAY</button>
+                    </div>
                 </div>
             </div>
         `
@@ -85,13 +90,13 @@ function getEle(selector) {
 };
 
 // ============================ Cart Item ========================
-let cartDetails  = [];
+let cartDetails  = getStoreCartDetails();
 let totalItemCart;
 let totalPriceCart;
 
-
+renderCart();
   // get data product
-getDataProduct();
+// getDataProduct();
 function getDataProduct() {
     apiGetProducts().then((response) => {
         const products = response.data.map((product) => {
@@ -110,20 +115,19 @@ function getDataProduct() {
             dataUI = true;
             // call API thành công
             productsList = products;
-            renderCart();
     }).catch((error) => {
         alert("API get product Error");
     });
 }
 
-setTimeout(() => {
-    if (!productsList) {
-        alert("API get product UI Error");
-    } else {
-        dataUI = true;
-        console.log("productsList: ", productsList);
-    }
-  }, 2000);
+// setTimeout(() => {
+//     if (!productsList) {
+//         alert("API get product UI Error");
+//     } else {
+//         dataUI = true;
+//         console.log("productsList: ", productsList);
+//     }
+//   }, 2000);
 
 //   thêm sản phẩm vào cart
 function addCartItem(productId) {
@@ -153,15 +157,13 @@ function addCartItem(productId) {
         });
         cartDetails[index].quality ++;
     } 
-    console.log("cartDetails add item: ",cartDetails);
     renderCart();
 };
 
 // đưa ra giao diện cart
 function renderCart() {
+    storeCartDetails();
     total();
-    console.log("totalItemCart: ",totalItemCart);
-    console.log("totalPriceCart: ",totalPriceCart);
     let html;
     if(cartDetails.length) {
         getEle('.header__cart-yes').style.display = 'block';
@@ -178,7 +180,7 @@ function renderCart() {
                             <div class="header__cart-item-info-heading">
                               <h5 class="header__cart-item-name">${product.itemName}</h5>
                               <div class="header__cart-item-price-wrap">
-                                <span class="header__cart-item-price">${product.price}</span>
+                                <span class="header__cart-item-price">${(product.price).toLocaleString()}</span>
                                 <span class="header__cart-item-multiply">x</span>
                                 <span class="header__cart-item-qnt">${product.quality}</span>
                             </div>
@@ -229,8 +231,30 @@ function btnSubItem(productId) {
 function total() {
     totalItemCart = cartDetails.reduce((total, obj) => total + obj.quality, 0);
     totalPriceCart = cartDetails.reduce((total, obj) => total + obj.quality*obj.price, 0);
-    getEle("#totalPrice").innerHTML = totalPriceCart;
-    getEle("#totalItem").innerHTML = totalItemCart;
+    getEle("#totalPrice").innerHTML = totalPriceCart.toLocaleString();
+    getEle("#totalItem").innerHTML = totalItemCart.toLocaleString();
     (totalItemCart>0) ? getEle("#totalItem").style.opacity = 1 :  getEle("#totalItem").style.opacity = 0;
 };
-  
+
+function clearCart() {
+    cartDetails = [];
+    renderCart();
+}
+
+// lưu localstory
+function storeCartDetails() {
+    localStorage.setItem('cartDetails', JSON.stringify(cartDetails));
+};
+
+// lấy thông tin giỏ hàng từ local
+function getStoreCartDetails() {
+    const json = localStorage.getItem('cartDetails');
+
+    if(!json) {
+        return []; 
+    } else {
+        // chuyển Json -> Array
+        return JSON.parse(json);
+    }
+    }
+

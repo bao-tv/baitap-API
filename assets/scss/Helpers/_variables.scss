@@ -1,16 +1,18 @@
 // color
-$color-background: #f8f9fa;
+$color-background: #f5f5f7;
 $color-body: #444444;
 $color-white: #fff;
 $color-pink: #e43c5c;
 $color-pink-light: #ea6981;
-$color-text: #493c3e;
-$color-text-note:#999;
-$color-header: #101010;
+$color-text: #1d1d20;
+$color-text-note:#86868B;
+$color-header: #515154;
 // $color-boders: #2d2d2d;
 $color-price: #0066CC;
+$color-border: #f3f3f3;
 $color-hover-boder : #dee2e6;
 $color-background-btn: #343a40;
+#1D1D1F
 
 $breakpoints: (
     sm: 576px,
@@ -27,3 +29,7 @@ $fs-item-price: 1.5rem;
 $fs-text:1rem;
 $fs-item-info: 0.8rem;
 $boder-1:10px;
+
+$height-img-product: 225px;
+
+$space-section: 50px;

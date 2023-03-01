@@ -256,6 +256,7 @@ header {
                             .header__cart-vnd {
                                 @include textStyle($color-background, $fs-item-info,400);
                             }
+                            
                         }
                         .header__cart-footer-right {
                             color: $color-background;
