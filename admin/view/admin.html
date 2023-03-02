@@ -78,7 +78,7 @@
             <!--Danh sách sản phẩm -->
             <div role="tabpanel" class="tab-pane  in active" id="DanhSachSP">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-5">
                   <!-- BEGIN BUTTOM THÊM MỚI -->
                   <button
                     id="btnThemSP"
@@ -90,6 +90,13 @@
                     Thêm Mới
                   </button>
                   <!-- END BUTTON THÊM MỚI -->
+                </div>
+                <div class="col-md-3">
+                  <select class="custom-select" id="sortedProducts">
+                    <option value="">Xếp theo: </option>
+                    <option value="giam">Xếp theo: Giá cao đến thấp</option>
+                    <option value="tang">Xếp theo: Giá thấp đến cao</option>
+                  </select>
                 </div>
                 <div class="col-md-4">
                   <!-- BEGIN TÌM KIẾM -->
@@ -158,14 +165,17 @@
                       class="form-control"
                       placeholder="Nhập vào tên sản phẩm"
                     />
+                    <span id="tbTenSP" class="notifValidate"></span>
                   </div>
                   <div class="form-group">
                     <label>Giá</label>
                     <input
-                      id="GiaSP"
+                      id="giaSP"
                       class="form-control"
                       placeholder="Nhập vào giá"
                     />
+                    <span id="tbgiaSP" class="notifValidate"></span>
+
                   </div>
                   <div class="form-group">
                     <label>Màn hình</label>
@@ -174,6 +184,7 @@
                       class="form-control"
                       placeholder="Nhập vào màn hình"
                     />
+                    <span id="tbscreenSP" class="notifValidate"></span>
                   </div>               
                   <div class="form-group">
                     <label>Camera sau</label>
@@ -182,6 +193,7 @@
                       class="form-control"
                       placeholder="Nhập vào Camera sau"
                     />
+                    <span id="tbbackCameraSP" class="notifValidate"></span>
                   </div>
                   <div class="form-group">
                     <label>Camera trước</label>
@@ -190,6 +202,25 @@
                       class="form-control"
                       placeholder="Nhập vào Camera trước"
                     />
+                    <span id="tbfrontCameraSP" class="notifValidate"></span>
+                  </div>
+                  <div class="form-group">
+                    <label>img</label>
+                    <input
+                    id="imgSP"
+                    class="form-control"
+                    placeholder="Nhập vào đường dẫn hình ảnh"
+                    />
+                    <span id="tbimgSP" class="notifValidate"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Loại sản phẩm: </label>
+                    <select class="form-control" id="loaiSP">
+                      <option value="">Other</option>
+                      <option value="phone">Phone</option>
+                      <option value="Samsung">Samsung</option>
+                    </select>
+                    <span id="tbloaiSP" class="notifValidate"></span>
                   </div>
                   <div class="form-group">
                     <label>Mô tả</label>
@@ -198,22 +229,7 @@
                       class="form-control"
                       placeholder="Nhập vào mô tả sản phẩm (nếu có)"
                     />
-                  </div>
-                  <div class="form-group">
-                    <label>img</label>
-                    <input
-                      id="imgSP"
-                      class="form-control"
-                      placeholder="Nhập vào đường dẫn hình ảnh"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="">Loại sản phẩm: </label>
-                    <select class="form-control" id="loaiSP">
-                        <option value="other">Other</option>
-                        <option value="phone">Phone</option>
-                        <option value="Samsung">Samsung</option>
-                    </select>
+                    <span id="tbdescSP" class="notifValidate"></span>
                   </div>
                 </div>
                 <!-- Modal footer -->
@@ -249,6 +265,7 @@
 
     <!-- JS -->
     <script src="../model/Product.js"></script>
+    <script src="../model/validate.js"></script>
     <script src="../services/productAPI.js"></script>
     <script src="../controller/main.js"></script>
   </body>
