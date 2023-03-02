@@ -12,7 +12,6 @@ $color-price: #0066CC;
 $color-border: #f3f3f3;
 $color-hover-boder : #dee2e6;
 $color-background-btn: #343a40;
-#1D1D1F
 
 $breakpoints: (
     sm: 576px,
@@ -29,7 +28,18 @@ $fs-item-price: 1.5rem;
 $fs-text:1rem;
 $fs-item-info: 0.8rem;
 $boder-1:10px;
-
 $height-img-product: 225px;
-
 $space-section: 50px;
+
+$time-hover: 0.3s;
+
+@keyframes headerCartGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

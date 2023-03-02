@@ -1,4 +1,5 @@
 getProduct();
+let productsList = [];
 // lấy danh sách sản phảm từ API
 function getProduct(searchValue) {
     apiGetProducts(searchValue).then((response) => {
@@ -16,6 +17,7 @@ function getProduct(searchValue) {
             );
         });
         // call API thành công
+        (!searchValue) ? productsList = products : "";
         renderProducts(products);
     }).catch((error) => {
         alert("API get product Error");
@@ -53,9 +55,10 @@ function renderProducts(products) {
 }
 
 function createdProduct () {
+    // DOm lấy info
     const product = {
         itemName : getEle("#TenSP").value,
-        price : getEle("#GiaSP").value,
+        price : getEle("#giaSP").value,
         screen : getEle("#screenSP").value,
         backCamera : getEle("#backCameraSP").value,
         frontCamera : getEle("#frontCameraSP").value,
@@ -63,6 +66,9 @@ function createdProduct () {
         des : getEle("#descSP").value,
         type : getEle("#loaiSP").value
     }
+    // kiểm tra validate của input
+    let isValid = validate();
+    if(!isValid) return;
 
     apiCreatedProduct(product).then((response) => {
         getProduct();
@@ -73,7 +79,9 @@ function createdProduct () {
         console.log(error);
         alert(`Tạo mới sản phẩm ${product.itemName} thất bại`);
         $('#myModal').modal('hide');
-    })
+    });
+
+    resetFrom();
 }
 
 // hàm xóa sản phẩm: 
@@ -92,7 +100,7 @@ function selectProduct(productID) {
     apiSelectProduct(productID).then((response) => {
         const product = response.data;
         getEle("#TenSP").value = product.itemName;
-        getEle("#GiaSP").value = product.price;
+        getEle("#giaSP").value = product.price;
         getEle("#screenSP").value = product.screen;
         getEle("#backCameraSP").value = product.backCamera;
         getEle("#frontCameraSP").value = product.frontCamera;
@@ -116,7 +124,7 @@ function selectProduct(productID) {
 function updateProduct(productID) {
     const product = {
         itemName : getEle("#TenSP").value,
-        price : getEle("#GiaSP").value,
+        price : getEle("#giaSP").value,
         screen : getEle("#screenSP").value,
         backCamera : getEle("#backCameraSP").value,
         frontCamera : getEle("#frontCameraSP").value,
@@ -132,24 +140,46 @@ function updateProduct(productID) {
         alert("Cập nhật sản phẩm thất bại");
         $('#myModal').modal('hide');
     });
+
+    resetFrom();
 }
+
+// hàm sort theo giá tiên
+let sortArray;
+function sortedUp() {
+    function compare(a, b) {
+          return a.price - b.price;
+        };
+    sortArray = productsList.sort(compare);
+    renderProducts(sortArray);
+};
+
+function sorteDown() {
+    function compare(a, b) {
+          return b.price - a.price;
+        };
+    sortArray = productsList.sort(compare);
+    renderProducts(sortArray);
+};
+
 
 // DOM
 getEle("#btnThemSP").addEventListener("click", () => {
     getEle(".modal-title").innerHTML = "Thêm sản phẩm";
     getEle(".modal-footer").innerHTML = `
-      <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+      <button class="btn btn-secondary" data-dismiss="modal" onclick="resetFrom()">Hủy</button>
       <button class="btn btn-success" onclick="createdProduct()">Thêm</button>
     `
   });
 
-  getEle("#txtSearch").addEventListener("keydown", (event) => {
+getEle("#txtSearch").addEventListener("keydown", (event) => {
     setTimeout(() => {
       const searchValue = event.target.value;
       getProduct(searchValue);
     }, 1000);
   });
 
+getEle('#sortedProducts').addEventListener('change', ()=> (getEle('#sortedProducts').value == 'giam') ? sorteDown() : sortedUp());
 // ================ Helpers ===================
 function getEle(selector) {
     return document.querySelector(selector)
