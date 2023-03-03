@@ -13,23 +13,24 @@ const arrNotif = [
 
 function validate() {
     let isValid = true;
+    console.log('kiểm tra validate');
     // check tên SP
     if(!getEle("#TenSP").value) {
         isValid = false;
         getEle("#tbTenSP").innerHTML = arrNotif[0];
     } else {
-        getEle("#tbTenSP").innerHTML = "";
+        getEle("#tbTenSP").innerHTML = "1";
     }
 
     // check giá
     if (!getEle("#giaSP").value) {
         isValid = false;
         getEle("#tbgiaSP").innerHTML = arrNotif[1];
-    } else if(isNaN(getEle("#giaSP").value)) {
+    } else if(isNaN(parseFloat((getEle('#giaSP').value).replace(/\./g, '')))) {
         isValid = false;
         getEle("#tbgiaSP").innerHTML = arrNotif[7];
     } else {
-        getEle("#tbgiaSP").innerHTML = "";
+        getEle("#tbgiaSP").innerHTML = "1";
     }
 
     // check màn hình ...
@@ -37,35 +38,35 @@ function validate() {
         isValid = false;
         getEle("#tbscreenSP").innerHTML = arrNotif[2];
     } else {
-        getEle("#tbscreenSP").innerHTML = "";
+        getEle("#tbscreenSP").innerHTML = "1";
     }
 
     if(!getEle("#frontCameraSP").value) {
         isValid = false;
         getEle("#tbfrontCameraSP").innerHTML = arrNotif[3];
     } else {
-        getEle("#tbfrontCameraSP").innerHTML = "";
+        getEle("#tbfrontCameraSP").innerHTML = "1";
     }
     
     if(!getEle("#backCameraSP").value) {
         isValid = false;
         getEle("#tbbackCameraSP").innerHTML = arrNotif[4];
     } else {
-        getEle("#tbbackCameraSP").innerHTML = "";
+        getEle("#tbbackCameraSP").innerHTML = "1";
     }
 
     if(!getEle("#imgSP").value) {
         isValid = false;
         getEle("#tbimgSP").innerHTML = arrNotif[5];
     } else {
-        getEle("#tbimgSP").innerHTML = "";
+        getEle("#tbimgSP").innerHTML = "1";
     }
 
     if(!getEle("#loaiSP").value) {
         isValid = false;
         getEle("#tbloaiSP").innerHTML = arrNotif[6];
     } else {
-        getEle("#tbloaiSP").innerHTML = "";
+        getEle("#tbloaiSP").innerHTML = "1";
     }
     return isValid;
 };
