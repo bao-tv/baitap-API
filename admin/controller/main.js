@@ -32,7 +32,7 @@ function renderProducts(products) {
             <tr>
                 <td>${index + 1}</td>
                 <td>${product.itemName}</td>
-                <td>${product.price}</td>
+                <td>${(+product.price).toLocaleString()}</td>
                 <td>${product.screen}</td>
                 <td>${product.backCamera}</td>
                 <td>${product.frontCamera}</td>
@@ -100,17 +100,17 @@ function selectProduct(productID) {
     apiSelectProduct(productID).then((response) => {
         const product = response.data;
         getEle("#TenSP").value = product.itemName;
-        getEle("#giaSP").value = product.price;
+        getEle("#giaSP").value = (+product.price).toLocaleString();
         getEle("#screenSP").value = product.screen;
         getEle("#backCameraSP").value = product.backCamera;
         getEle("#frontCameraSP").value = product.frontCamera;
         getEle("#imgSP").value = product.img;
         getEle("#descSP").value = product.des;
-        getEle("#loaiSP").valu = product.type;
+        getEle("#loaiSP").value = product.type;
         // mo UI
         getEle(".modal-title").innerHTML = "Cập nhật sản phẩm";
         getEle(".modal-footer").innerHTML = `
-            <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            <button class="btn btn-secondary" data-dismiss="modal" onclick="resetFrom()">Hủy</button>
             <button class="btn btn-success" onclick="updateProduct('${product.id}')">Cập nhật</button>
             `
             $('#myModal').modal('show');
@@ -132,6 +132,9 @@ function updateProduct(productID) {
         des : getEle("#descSP").value,
         type : getEle("#loaiSP").value,
     };
+    // kiểm tra validate của input
+    let isValid = validate();
+    if(!isValid) return;
     apiUpdateProduct(productID, product).then((response) => {
         getProduct();
         alert(`Cập nhật sản phẩm ${product.itemName} thành công`);
