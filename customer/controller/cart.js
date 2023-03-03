@@ -55,7 +55,7 @@ function renderCart() {
                             <div class="header__cart-item-info-heading">
                               <h5 class="header__cart-item-name">${product.itemName}</h5>
                               <div class="header__cart-item-price-wrap">
-                                <span class="header__cart-item-price">${(product.price).toLocaleString()}</span>
+                                <span class="header__cart-item-price">${(+product.price).toLocaleString()}</span>
                                 <span class="header__cart-item-multiply">x</span>
                                 <span class="header__cart-item-qnt">${product.quality}</span>
                             </div>

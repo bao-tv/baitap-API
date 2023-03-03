@@ -120,11 +120,11 @@ function selectProduct(productID) {
     })
 };
 
-// hàm update sp
+// hàm update sp 
 function updateProduct(productID) {
     const product = {
         itemName : getEle("#TenSP").value,
-        price : getEle("#giaSP").value,
+        price : parseFloat((getEle('#giaSP').value).replace(/\./g, '')),
         screen : getEle("#screenSP").value,
         backCamera : getEle("#backCameraSP").value,
         frontCamera : getEle("#frontCameraSP").value,
@@ -132,8 +132,10 @@ function updateProduct(productID) {
         des : getEle("#descSP").value,
         type : getEle("#loaiSP").value,
     };
+    console.log(typeof product.price,product.price);
     // kiểm tra validate của input
     let isValid = validate();
+    console.log('cập nhật');
     if(!isValid) return;
     apiUpdateProduct(productID, product).then((response) => {
         getProduct();
