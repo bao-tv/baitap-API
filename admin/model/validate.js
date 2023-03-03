@@ -88,4 +88,6 @@ function resetFrom() {
     getEle("#tbimgSP").innerHTML = '';
     getEle("#tbdescSP").innerHTML = '';
     getEle("#tbloaiSP").innerHTML = '';
+
+    console.log('đã reset');
 }
