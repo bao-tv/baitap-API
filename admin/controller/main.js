@@ -100,7 +100,7 @@ function selectProduct(productID) {
     apiSelectProduct(productID).then((response) => {
         const product = response.data;
         getEle("#TenSP").value = product.itemName;
-        getEle("#giaSP").value = (+product.price).toLocaleString();
+        getEle("#giaSP").value = product.price;
         getEle("#screenSP").value = product.screen;
         getEle("#backCameraSP").value = product.backCamera;
         getEle("#frontCameraSP").value = product.frontCamera;
@@ -124,7 +124,7 @@ function selectProduct(productID) {
 function updateProduct(productID) {
     const product = {
         itemName : getEle("#TenSP").value,
-        price : parseFloat((getEle('#giaSP').value).replace(/\./g, '')),
+        price : getEle('#giaSP').value,
         screen : getEle("#screenSP").value,
         backCamera : getEle("#backCameraSP").value,
         frontCamera : getEle("#frontCameraSP").value,
