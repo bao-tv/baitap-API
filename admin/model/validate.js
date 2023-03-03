@@ -19,18 +19,18 @@ function validate() {
         isValid = false;
         getEle("#tbTenSP").innerHTML = arrNotif[0];
     } else {
-        getEle("#tbTenSP").innerHTML = "1";
+        getEle("#tbTenSP").innerHTML = "";
     }
 
     // check giá
     if (!getEle("#giaSP").value) {
         isValid = false;
         getEle("#tbgiaSP").innerHTML = arrNotif[1];
-    } else if(isNaN(parseFloat((getEle('#giaSP').value).replace(/\./g, '')))) {
+    } else if(isNaN(getEle('#giaSP').value)) {
         isValid = false;
         getEle("#tbgiaSP").innerHTML = arrNotif[7];
     } else {
-        getEle("#tbgiaSP").innerHTML = "1";
+        getEle("#tbgiaSP").innerHTML = "";
     }
 
     // check màn hình ...
@@ -38,35 +38,35 @@ function validate() {
         isValid = false;
         getEle("#tbscreenSP").innerHTML = arrNotif[2];
     } else {
-        getEle("#tbscreenSP").innerHTML = "1";
+        getEle("#tbscreenSP").innerHTML = "";
     }
 
     if(!getEle("#frontCameraSP").value) {
         isValid = false;
         getEle("#tbfrontCameraSP").innerHTML = arrNotif[3];
     } else {
-        getEle("#tbfrontCameraSP").innerHTML = "1";
+        getEle("#tbfrontCameraSP").innerHTML = "";
     }
     
     if(!getEle("#backCameraSP").value) {
         isValid = false;
         getEle("#tbbackCameraSP").innerHTML = arrNotif[4];
     } else {
-        getEle("#tbbackCameraSP").innerHTML = "1";
+        getEle("#tbbackCameraSP").innerHTML = "";
     }
 
     if(!getEle("#imgSP").value) {
         isValid = false;
         getEle("#tbimgSP").innerHTML = arrNotif[5];
     } else {
-        getEle("#tbimgSP").innerHTML = "1";
+        getEle("#tbimgSP").innerHTML = "";
     }
 
     if(!getEle("#loaiSP").value) {
         isValid = false;
         getEle("#tbloaiSP").innerHTML = arrNotif[6];
     } else {
-        getEle("#tbloaiSP").innerHTML = "1";
+        getEle("#tbloaiSP").innerHTML = "";
     }
     return isValid;
 };
