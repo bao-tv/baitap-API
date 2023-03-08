@@ -167,7 +167,6 @@ function sorteDown() {
     renderProducts(sortArray);
 };
 
-
 // DOM
 getEle("#btnThemSP").addEventListener("click", () => {
     getEle(".modal-title").innerHTML = "Thêm sản phẩm";
@@ -177,11 +176,15 @@ getEle("#btnThemSP").addEventListener("click", () => {
     `
   });
 
-getEle("#txtSearch").addEventListener("keydown", (event) => {
-    setTimeout(() => {
-      const searchValue = event.target.value;
-      getProduct(searchValue);
-    }, 1000);
+  getEle("#txtSearch").addEventListener("keydown", (event) => {
+    if(event.key == 'Enter') {
+        event.preventDefault();
+    } else {
+        setTimeout(() => {
+          const searchValue = event.target.value;
+          getProduct(searchValue.trim());
+        }, 1000);
+    }
   });
 
 getEle('#sortedProducts').addEventListener('change', ()=> (getEle('#sortedProducts').value == 'giam') ? sorteDown() : sortedUp());
