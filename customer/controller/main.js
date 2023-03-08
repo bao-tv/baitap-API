@@ -66,10 +66,14 @@ function renderProducts(products) {
 }
 
 getEle("#txtSearch").addEventListener("keydown", (event) => {
-    setTimeout(() => {
-      const searchValue = event.target.value;
-      getProduct(searchValue);
-    }, 1000);
+    if(event.key == 'Enter') {
+        event.preventDefault();
+    } else {
+        setTimeout(() => {
+          const searchValue = event.target.value;
+          getProduct(searchValue.trim());
+        }, 1000);
+    }
   });
 
 //   ẩn hiện thành search
